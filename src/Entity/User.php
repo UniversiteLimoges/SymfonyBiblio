@@ -53,6 +53,11 @@ class User implements UserInterface
      */
     private $telephone;
 
+    public function __construct() {
+        // Rôle par défaut
+        $this->roles = array('ROLE_USER');
+    }
+
     public function getId(): ?int
     {
         return $this->id;

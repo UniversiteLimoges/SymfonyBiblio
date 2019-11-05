@@ -61,6 +61,11 @@ class Livre
      */
     private $exemplaire_dispo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="livres")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Livre
     public function setExemplaireDispo(int $exemplaire_dispo): self
     {
         $this->exemplaire_dispo = $exemplaire_dispo;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

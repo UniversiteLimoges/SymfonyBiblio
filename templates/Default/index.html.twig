@@ -1,43 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catalogue{% endblock %}
+{% block title %}Page accueuil{% endblock %}
 
 {% block body %}
-    <h1>Catalogue</h1>
+    Yassssss
+{% endblock %}
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Livre</th>
-            <th>Description</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
-            <th>Date de parution</th>
-            <th>Dsiponibilitée</th>
-            <th>exemplaire dispo</th>
-            <th>Category</th>
-
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for livre in livres %}
-            <tr>
-                <td>{{ Livre.titre }}</td>
-                <td>{{ Livre.auteur }}</td>
-                <td>{{ Livre.editeur }}</td>
-                <td>{{ Livre.date_parution }}</td>
-                <td>{{ Livre.didsponibilite }}</td>
-                <td>{{ Livre.exemplaire_dispo }}</td>
-                <td>{{ Livre.description }}</td>
-                <td>{{ Livre.category.nom }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+{% block content %}
 {% endblock %}

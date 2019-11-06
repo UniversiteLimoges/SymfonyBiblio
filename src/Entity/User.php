@@ -183,4 +183,20 @@ class User implements UserInterface
 
         return $this;
     }
+
+    // public function hasRoleAdmin()
+    // {
+    //     return ($this->hasRole('ROLE_ADMIN')) ? 'Yes' : 'No';
+    // }
+
+    // public function setHasRoleAdmin($isAdmin)
+    // {
+    //     if ('Yes' === $isAdmin && 'No' === $this->hasRole('ROLE_ADMIN')) {
+    //         $this->addRole('ROLE_ADMIN');
+    //     }
+    //     if ('No' === $isAdmin && 'Yes' == $this->hasRole('ROLE_ADMIN')) {
+    //         $this->removeRole('ROLE_ADMIN');
+    //     }
+    // $this->isAdmin = $isAdmin;
+    // }
 }

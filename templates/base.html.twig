@@ -40,10 +40,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <ul class="navbar-nav">
                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a class="nav-link active" href="{{ path('easyadmin') }}">Administration</a>
+                            </li>
+                        {% endif %}
+                        
                         <li>
                             <a class="nav-link" href="{{ path('app_logout') }}">Se Déconnecter</a>
                         </li>
-                    {% else%}
+                    {% else %}
                         <li>
                             <a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
                         </li>

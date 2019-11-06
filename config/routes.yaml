@@ -1,3 +1,9 @@
 index:
    path: /
    controller: App\Controller\DefaultController::index
+
+# Ajout manuel de easyadmin en route pour y accéder en tant que route
+easy_admin_bundle:
+   resource: "@EasyAdminBundle/Controller/"
+   type: annotation
+   prefix: /easyadmin

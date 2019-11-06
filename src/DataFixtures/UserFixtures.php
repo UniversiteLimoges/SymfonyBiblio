@@ -40,7 +40,7 @@ class UserFixtures extends Fixture
         $user2->setTelephone('0643546845');
         $user2->setRoles(array('ROLE_USER'));
         $user2->setAdresse('Rue de la fume');
-        $password = $this->encoder->encodePassword($user2, 'Unchien');
+        $password = $this->encoder->encodePassword($user2, 'azerty');
         $user2->setPassword($password);
 
         $manager->persist($user2);

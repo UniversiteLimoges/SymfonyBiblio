@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {% endblock %}
     </head>
     <body>
         {% block header %}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{{ path('index') }}">Symfony Biblio</a>
+                <a class="navbar-brand" href="{{ path('index') }}">Symfony Biblio</a>
+                
             <button class="navbar-toggler" type="button" data-toggle="collapse"         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"    aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('category_index')}}">modifier les categories <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown show">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Catégories</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="{{ path('category_index')}}">Lister</a>
+                                <a class="dropdown-item" href="{{ path('category_new')}}">Ajouter</a>
+                            </div>
                         </li>
                     {% elseif is_granted('ROLE_USER') %}
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Voir les livres <span class="sr-only">(current)</span></a>
                         </li>
-
                     {% endif %}
                 </ul>
             </div>
+
         
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <ul class="navbar-nav">
@@ -40,6 +48,7 @@
                             <a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
                         </li>
                     {% endif %}
+
                         <!-- 
                         <li>
                             <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
@@ -51,8 +60,9 @@
         {% endblock %}
 
         {% block body %}{% endblock %}
-
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

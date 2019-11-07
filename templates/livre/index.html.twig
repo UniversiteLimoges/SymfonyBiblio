@@ -12,6 +12,7 @@
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Auteur</th>
+                <th>Categorie</th>
                 <th>Editeur</th>
                 <th>DateParution</th>
                 <th>Disponibilite</th>
@@ -31,6 +32,7 @@
                 <td>{{ livre.titre }}</td>
                 <td>{{ livre.description }}</td>
                 <td>{{ livre.auteur }}</td>
+                <td>{{ livre.category}}</td>
                 <td>{{ livre.editeur }}</td>
                 <td>{{ livre.dateParution ? livre.dateParution|date('Y-m-d') : '' }}</td>
                 <td>{{ livre.disponibilite ? 'Yes' : 'No' }}</td>

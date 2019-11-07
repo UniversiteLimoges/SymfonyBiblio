@@ -15,10 +15,13 @@
                 <th>Editeur</th>
                 <th>DateParution</th>
                 <th>Disponibilite</th>
+                {% if is_granted('ROLE_ADMIN') %}
                 <th>Iban</th>
                 <th>Exemplaire_total</th>
                 <th>Exemplaire_dispo</th>
+                {% endif %}
                 <th>actions</th>
+
             </tr>
         </thead>
         <tbody>
@@ -31,13 +34,17 @@
                 <td>{{ livre.editeur }}</td>
                 <td>{{ livre.dateParution ? livre.dateParution|date('Y-m-d') : '' }}</td>
                 <td>{{ livre.disponibilite ? 'Yes' : 'No' }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
                 <td>{{ livre.iban }}</td>
                 <td>{{ livre.exemplaireTotal }}</td>
                 <td>{{ livre.exemplaireDispo }}</td>
+                {% endif %}
                 <td>
 
                     <a href="{{ path('livre_show', {'id': livre.id }) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('livre_edit', {'id': livre.id }) }}">edit</a>
+                    {% endif %}
                     {% set emp= false %}
 
                     <a href="{{ path('emprunt', { 'id': livre.id }) }}">
@@ -63,6 +70,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('livre_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

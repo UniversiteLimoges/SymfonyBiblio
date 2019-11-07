@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LivreRepository")
  */
@@ -191,6 +192,27 @@ class Livre
         return $this;
     }
 
+    public function enleverExemplaireDispo(): self
+    {
+        if ($this->exemplaire_total!=0){
+            $this->exemplaire_dispo--;
+            if ($this->exemplaire_dispo == 0){
+                $this->disponibilite=false;
+            }
+        }
+        return $this;
+    }
+
+    public function ajouterExemplaireDispo(): self
+    {
+        $this->exemplaire_dispo++;
+        if ($this->exemplaire_dispo == 1){
+            $this->disponibilite=true;
+        }
+        return $this;
+
+    }
+
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -228,4 +250,5 @@ class Livre
 
         return $this;
     }
+
 }

@@ -91,4 +91,28 @@ class LivreController extends AbstractController
 
         return $this->redirectToRoute('livre_index');
     }
+    /**
+     * @Route("/{id}/emprunt", name="emprunt", methods={"GET"})
+     */
+    public function emprunt(Livre $livre): Response
+    {
+        $user1=$this->getUser();
+        $users=$livre->getUser();
+        $em = $this->getDoctrine()->getManager();
+        foreach ($users as $user){
+            if($user==$user1){
+                $livre->removeUser($user1);
+                $livre->ajouterExemplaireDispo();
+                $em->persist($livre);
+                $em->flush();
+                return $this->redirectToRoute('livre_index');
+            }
+        }
+        $livre->addUser($user1);
+        $livre->enleverExemplaireDispo();
+        $em->persist($livre);
+        $em->flush();
+        return $this->redirectToRoute('livre_index');
+    }
+
 }

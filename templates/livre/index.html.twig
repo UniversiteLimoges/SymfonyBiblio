@@ -35,8 +35,25 @@
                 <td>{{ livre.exemplaireTotal }}</td>
                 <td>{{ livre.exemplaireDispo }}</td>
                 <td>
-                    <a href="{{ path('livre_show', {'id': livre.id}) }}">show</a>
-                    <a href="{{ path('livre_edit', {'id': livre.id}) }}">edit</a>
+
+                    <a href="{{ path('livre_show', {'id': livre.id }) }}">show</a>
+                    <a href="{{ path('livre_edit', {'id': livre.id }) }}">edit</a>
+                    {% set emp= false %}
+
+                    <a href="{{ path('emprunt', { 'id': livre.id }) }}">
+                        {% for user in livre.user %}
+                            {% if user==app.user %}
+                                retourner
+                                {% set emp= true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if livre.disponibilite==true %}
+                        {% if emp==false %}
+                            emprunter
+                        {% endif %}
+                        {% endif %}
+                    </a>
+
                 </td>
             </tr>
         {% else %}

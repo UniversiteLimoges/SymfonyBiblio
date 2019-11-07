@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre{% endblock %}
+
+{% block body %}
+    <h1>Livre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livre.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ livre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ livre.description }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ livre.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Editeur</th>
+                <td>{{ livre.editeur }}</td>
+            </tr>
+            <tr>
+                <th>DateParution</th>
+                <td>{{ livre.dateParution ? livre.dateParution|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilite</th>
+                <td>{{ livre.disponibilite ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Iban</th>
+                <td>{{ livre.iban }}</td>
+            </tr>
+            <tr>
+                <th>Exemplaire_total</th>
+                <td>{{ livre.exemplaireTotal }}</td>
+            </tr>
+            <tr>
+                <th>Exemplaire_dispo</th>
+                <td>{{ livre.exemplaireDispo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('livre_index') }}">back to list</a>
+
+    <a href="{{ path('livre_edit', {'id': livre.id}) }}">edit</a>
+
+    {{ include('livre/_delete_form.html.twig') }}
+{% endblock %}

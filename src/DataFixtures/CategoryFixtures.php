@@ -16,9 +16,8 @@ class CategoryFixtures extends Fixture
         $Category = new Category();
         $Category->setNom("Roman");
         $Category->setDescription("C'est la categorie des roman");
+
         $manager->persist($Category);
-
-
         $manager->flush();
     }
 }

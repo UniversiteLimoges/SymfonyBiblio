@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle Category{% endblock %}
+{% block title %}Nouvelle Categorie{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="../css/fieldsForm.css">{% endblock %}
 
 {% block body %}
-    <h1>Création d'une nouvelle catégorie</h1>
-
-    {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('category_index') }}">Revenir à la liste</a>
+    <div class="container">
+        <h1>Création d'une nouvelle catégorie</h1>
+        {{ include('category/_form.html.twig') }}
+        <a href="{{ path('category_index') }}">Revenir à la liste</a>
+    </div>
 {% endblock %}

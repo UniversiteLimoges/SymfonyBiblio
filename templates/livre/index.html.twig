@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Livre index{% endblock %}
+{% block title %}Livres{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="../css/tables.css">{% endblock %}
 
 {% block body %}
-    <h1>Livre index</h1>
+    <div class="container">
+    <h1>Affichage de tous les livres</h1>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,15 +16,14 @@
                 <th>Auteur</th>
                 <th>Categorie</th>
                 <th>Editeur</th>
-                <th>DateParution</th>
-                <th>Disponibilite</th>
+                <th>Date de parution</th>
+                <th>Disponibilité</th>
                 {% if is_granted('ROLE_ADMIN') %}
-                <th>Iban</th>
-                <th>Exemplaire_total</th>
-                <th>Exemplaire_dispo</th>
+                    <th>Iban</th>
+                    <th>Exemplaire_total</th>
+                    <th>Exemplaire_dispo</th>
                 {% endif %}
-                <th>actions</th>
-
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,29 +38,28 @@
                 <td>{{ livre.dateParution ? livre.dateParution|date('Y-m-d') : '' }}</td>
                 <td>{{ livre.disponibilite ? 'Yes' : 'No' }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                <td>{{ livre.iban }}</td>
-                <td>{{ livre.exemplaireTotal }}</td>
-                <td>{{ livre.exemplaireDispo }}</td>
+                    <td>{{ livre.iban }}</td>
+                    <td>{{ livre.exemplaireTotal }}</td>
+                    <td>{{ livre.exemplaireDispo }}</td>
                 {% endif %}
                 <td>
-
-                    <a href="{{ path('livre_show', {'id': livre.id }) }}">show</a>
+                    <a href="{{ path('livre_show', {'id': livre.id }) }}">Voir</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('livre_edit', {'id': livre.id }) }}">edit</a>
+                        <a href="{{ path('livre_edit', {'id': livre.id }) }}">Editer</a>
                     {% endif %}
-                    {% set emp= false %}
+                    {% set emp = false %}
 
                     <a href="{{ path('emprunt', { 'id': livre.id }) }}">
                         {% for user in livre.user %}
-                            {% if user==app.user %}
-                                retourner
-                                {% set emp= true %}
+                            {% if user == app.user %}
+                                Retourner
+                                {% set emp = true %}
                             {% endif %}
                         {% endfor %}
-                        {% if livre.disponibilite==true %}
-                        {% if emp==false %}
-                            emprunter
-                        {% endif %}
+                        {% if livre.disponibilite == true %}
+                            {% if emp == false %}
+                                Emprunter
+                            {% endif %}
                         {% endif %}
                     </a>
 
@@ -67,12 +67,14 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Pas d'enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('livre_new') }}">Create new</a>
+        <a href="{{ path('livre_new') }}">Créer un nouveau livre</a>
     {% endif %}
+    </div> 
+
 {% endblock %}

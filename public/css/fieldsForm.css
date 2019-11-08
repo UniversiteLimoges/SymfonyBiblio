@@ -1,0 +1,12 @@
+html, body {
+    background: #5ccebf; /* fallback for old browsers */
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+     height: 100%
+}
+.container {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}

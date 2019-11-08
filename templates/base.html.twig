@@ -3,9 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        {% endblock %}
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block header %}
@@ -41,11 +40,10 @@
                     </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('livre_index')}}">Catalogue</a>
-                        </li>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
-
         
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <ul class="navbar-nav">
@@ -55,14 +53,19 @@
                                 <a class="nav-link active" href="{{ path('easyadmin') }}">Administration</a>
                             </li>
                         {% endif %}
-                        <li class="nav-item dropdown show">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Utilisateur</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="#">Modifer compte</a>
-                                <a class="dropdown-item" href="{{ path('app_logout') }}">Se Déconnecter</a>
-                            </div>
+                            <li>
+                                <a class="nav-link active" href="{{ path('easyadmin') }}">Administration</a>
+                            </li>
+                        {% if is_granted('ROLE_USER') %}
+                        {% endif %}
+
+                        <li>
+                            <a class="nav-link active" href="{{ path('app_logout') }}">Se Déconnecter</a>
                         </li>
                     {% else %}
+                        <li>
+                            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
                         <li>
                             <a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
                         </li>

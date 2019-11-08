@@ -24,7 +24,7 @@
 
     <a href="{{ path('category_index') }}">Revenir à la liste</a>
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('category_edit', {'id': category.id}) }}">Editer</a>
+        <a href="{{ path('category_edit', {'id': category.id}) }}">Editer</a>
     {{ include('category/_delete_form.html.twig') }}
     {% endif %}
 {% endblock %}

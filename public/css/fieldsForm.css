@@ -1,5 +1,5 @@
 html, body {
-    background: #5ccebf; /* fallback for old browsers */
+    background: #FFFFFF; /* fallback for old browsers */
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -9,4 +9,8 @@ html, body {
     width: 75%;
     margin: 0 auto;
     text-align: center;
+}
+
+.h3{
+    font-size: 14px;
 }
